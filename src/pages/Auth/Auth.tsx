@@ -63,7 +63,7 @@ const Auth = ({enterAcc} : any) => {
     }
     else if (statusAuth === 3){
         resultAlert = <AlertWindow data={{
-            title:"Успешно",
+            title:"Ошибка",
             text:"Пользователь с таким логином не найден.",
             onClose: () => {setStatusAuth(0)},
         }}/>
