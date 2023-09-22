@@ -2,7 +2,7 @@ import React from 'react';
 import Header from "./Header";
 import {useCookies} from "react-cookie";
 import {useDispatch} from "react-redux";
-import {setIsAuth} from "../../../storeRedux/slices/dataPersonSlice";
+import {setIsAuth, setUserId} from "../../../storeRedux/slices/dataPersonSlice";
 
 const HeaderContainer = ({currentPage} : any) => {
 
@@ -20,8 +20,12 @@ const HeaderContainer = ({currentPage} : any) => {
             value: false,
         }))
     }
-    else if (isAuth)
+    else if (isAuth){
         dispatch(setIsAuth({value: true}))
+        const userId = cookie.id;
+        dispatch(setUserId(userId))
+    }
+
     else dispatch(setIsAuth({value: false}))
 
 

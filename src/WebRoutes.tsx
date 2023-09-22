@@ -4,6 +4,8 @@ import Template from "./components/templateWeb/Template";
 import MainPage from "./pages/MainPage/MainPage";
 import CreateNote from "./pages/CreateNote/CreateNote";
 import Auth from "./pages/Auth/Auth";
+import RegistrationContainer from "./pages/Registration/RegistrationContainer";
+import AuthContainer from "./pages/Auth/AuthContainer";
 
 export const WebRoutes = createBrowserRouter([
     {
@@ -34,7 +36,15 @@ export const WebRoutes = createBrowserRouter([
         path:"/auth",
         element: (
             <Template currentPage="account">
-                <Auth/>
+                <AuthContainer/>
+            </Template>
+        ),
+    },
+    {
+        path:"/registration",
+        element: (
+            <Template currentPage="account">
+                <RegistrationContainer/>
             </Template>
         ),
     }

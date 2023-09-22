@@ -1,5 +1,6 @@
 import React from 'react';
 import {useSelector} from "react-redux";
+import AlertWindow from "../../components/AlertWindow/AlertWindow";
 
 const MainPage = () => {
 
@@ -8,7 +9,7 @@ const MainPage = () => {
     return (
         <>
             <main>
-                main
+
             </main>
         </>
     );

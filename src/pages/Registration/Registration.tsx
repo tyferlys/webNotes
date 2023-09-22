@@ -1,39 +1,50 @@
-import { motion } from 'framer-motion';
-import React,  {useState} from 'react';
-import { useForm } from 'react-hook-form';
-import classes from "./auth.module.css"
+import React, {useState} from 'react';
+import classes from "./RegistrationStyle.module.css";
+import {useForm} from "react-hook-form";
+import {motion} from "framer-motion";
 import {Link, useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {addUser, User} from "../../storeRedux/slices/dataWebSlice";
 import AlertWindow from "../../components/AlertWindow/AlertWindow";
-import {User} from "../../storeRedux/slices/dataWebSlice";
 
-const Auth = ({enterAcc} : any) => {
 
+//#TODO СДЕЛАТЬ ПРОВЕРКУ НА СОВПАДЕНИЯ ПАРОЛЕЙ - ТОЧНЕЕ ЧТОБ ОНА ВЫВОДИЛАСЬ
+
+const Registration = () => {
+
+    const [isOpen, setIsOpen] = useState(0)
     const {register, handleSubmit, reset, formState: {errors}} = useForm()
-
     const [isMove, setIsMove] = useState(true);
-
-    const [statusAuth, setStatusAuth] = useState(0);
-
-    const users = useSelector((state : any) => state.dataWeb.users);
-
     const navigate = useNavigate();
 
-    const funcSubmit = async (data : any) => {
-        if (users.findIndex((item: User) => item.login === data.login && item.password === data.password) !== -1){
-            setStatusAuth(1)
-            const id = users.find((item: User) => item.login === data.login && item.password === data.password).id;
-            enterAcc(id)
-            reset();
+    const dispatch = useDispatch();
+    let users = useSelector((state: any) => state.dataWeb.users)
 
-            navigate("/")
+    const funcSubmit = (data : any) => {
+        console.log(data)
+
+        if (data.password === data.passwordRepeat){
+
+            if (users.findIndex((item: User) => item.login === data.login) === -1){
+                dispatch(addUser({
+                    login: data.login,
+                    password: data.password,
+                }));
+                setIsOpen(1)
+                reset()
+                setTimeout(() => {
+                    navigate("/auth");
+                }, 2000)
+            }
+            else{
+                setIsOpen(2)
+            }
+
         }
-        else if (users.findIndex((item: User) => item.login === data.login && item.password != data.password) !== -1)
-            setStatusAuth(2)
-        else
-            setStatusAuth(3)
+        else{
+            //ничего не должно быть
+        }
     }
-
 
     const stopMove = (event: any) => {
         event.stopPropagation()
@@ -45,37 +56,12 @@ const Auth = ({enterAcc} : any) => {
             setIsMove(true)
     }
 
-    let resultAlert = null;
-
-    if (statusAuth === 1){
-        resultAlert = <AlertWindow data={{
-            title:"Успешно",
-            text:"Вы успешно авторизировались и скоро будете перенаправлены на главную страницу.",
-            onClose: () => {setStatusAuth(0)},
-        }}/>
-    }
-    else if (statusAuth === 2){
-        resultAlert = <AlertWindow data={{
-            title:"Ошибка",
-            text:"Неправильный пароль.",
-            onClose: () => {setStatusAuth(0)},
-        }}/>
-    }
-    else if (statusAuth === 3){
-        resultAlert = <AlertWindow data={{
-            title:"Успешно",
-            text:"Пользователь с таким логином не найден.",
-            onClose: () => {setStatusAuth(0)},
-        }}/>
-    }
-
-
     return (
         <main>
             <div className={classes.mainContainer}>
-                <motion.div className={classes.authContainer}
+                <motion.div className={classes.regContainer}
                             initial={{
-                                translateX:"-200%",
+                                translateX:"200%",
                                 rotate:"30deg",
                             }}
                             animate={{
@@ -99,10 +85,11 @@ const Auth = ({enterAcc} : any) => {
                                 top:-20,
                                 bottom:20,
                             }}
+
                             onDragStart={stopMove}
                 >
                     <div className={classes.title}>
-                        Авторизация
+                        Регистрация
                     </div>
                     <div className={classes.formContainer}>
                         <form onSubmit={handleSubmit(funcSubmit)}>
@@ -128,6 +115,7 @@ const Auth = ({enterAcc} : any) => {
                                               {...register("login", {
                                                   required: true,
                                                   minLength: 3,
+
                                               })}
                                 />
                             </motion.div>
@@ -158,25 +146,44 @@ const Auth = ({enterAcc} : any) => {
                                 />
                             </motion.div>
                             {errors.password && <span className={classes.errors}>Ошибка в поле</span>}
+                            <div className={classes.labelForInput}>Повторите пароль</div>
+                            <motion.div className={classes.inputValueContainer}
+                                        whileHover={{
+                                            color:"#4E35F2",
+                                        }}
+                            >
+                                <motion.input type="password" placeholder="Повторите пароль" className={classes.inputValue}
+                                              whileHover={{
+                                                  color:"#4E35F2",
+                                                  borderColor:"#4E35F2",
+                                              }}
+                                              whileFocus={{
+                                                  scale:1.05,
+                                                  color:"#4E35F2",
+                                                  borderColor:"#4E35F2",
+                                              }}
+                                              onDragStart={stopMove}
+                                              onMouseLeave={() => {setIsMove(true)}}
+
+                                              {...register("passwordRepeat", {
+                                                  required: true,
+                                                  minLength: 5,
+                                              })}
+                                />
+                            </motion.div>
+                            {errors.passwordRepeat && <span className={classes.errors}>Ошибка в поле</span>}
                             <div className={classes.funcFormBut}>
-                                <motion.div className={classes.forgetPassword}
-                                            whileHover={{
-                                                color:"#75D966",
-                                            }}
-                                >
-                                    Забыли пароль?
-                                </motion.div>
-                                <Link to="/registration" className={classes.forgetPassword}>
+                                <Link to="/auth" className={classes.forgetPassword}>
                                     <motion.div
                                         whileHover={{
                                             color:"#75D966",
                                         }}
                                     >
-                                        Нет аккаунта?
+                                        Есть аккаунт?
                                     </motion.div>
                                 </Link>
                             </div>
-                            <motion.input type="submit" value="Войти" className={classes.submitButton}
+                            <motion.input type="submit" value="Зарегистрироваться" className={classes.submitButton}
                                           whileHover={{
                                               scale:1.05,
                                               backgroundColor:"#4E35F2",
@@ -186,23 +193,34 @@ const Auth = ({enterAcc} : any) => {
                     </div>
                 </motion.div>
                 <motion.div className={classes.textForMove}
-                    initial={{
-                        scale:0,
-                    }}
-                    animate={{
-                        scale:1,
-                    }}
-                    transition={{
-                        duration:0.3,
-                    }}
+                            initial={{
+                                scale:0,
+                            }}
+                            animate={{
+                                scale:1,
+                            }}
+                            transition={{
+                                duration:0.3,
+                            }}
                 >
                     Нервничаешь?<br/>
-                    Подвигай окошко авторизации
+                    Подвигай окошко регистрации
                 </motion.div>
             </div>
-            {resultAlert}
+            {isOpen==1?<AlertWindow data={{
+                title:"Поздравляем",
+                text:"Вы успешно зарегистрировались, скоро вы будете перенаправлены на страницу авторизации.",
+                onClose: () => {setIsOpen(0)},
+            }}/>
+                :isOpen==2?<AlertWindow data={{
+                        title:"Внимание",
+                        text:"Подобный логин уже существует.",
+                        onClose: () => {setIsOpen(0)},
+                }}/>
+                    :null
+            }
         </main>
     );
 };
 
-export default Auth;
+export default Registration;
