@@ -87,6 +87,7 @@ const Registration = () => {
                             }}
 
                             onDragStart={stopMove}
+                            //test
                 >
                     <div className={classes.title}>
                         Регистрация
