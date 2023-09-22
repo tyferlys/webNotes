@@ -1,0 +1,59 @@
+
+.headerContainer{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+
+    padding:2% 0%;
+}
+
+.linkContainer{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap:5%;
+
+    width:40%;
+
+    position: relative;
+}
+
+.link{
+    display:block;
+    text-align: center;
+    padding: 3% 2%;
+
+    font-size: 18px;
+    text-decoration: none;
+    color:#F2F2F2;
+
+    letter-spacing: 0.1vw;
+
+    transition: 0.4s;
+
+    text-shadow: 1px 1px 40px rgba(255, 255, 255, 0.2);
+}
+
+.link:hover{
+    scale:1.05;
+}
+
+.linkContent{
+    position: relative;
+    width:100%;
+}
+
+.logo{
+    font-size:38px;
+    font-weight: 800;
+    color:#F2F2F2;
+    text-transform: uppercase;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+
+    padding:1%;
+
+    text-shadow: 1px 1px 40px rgba(255, 255, 255, 0.2);
+}

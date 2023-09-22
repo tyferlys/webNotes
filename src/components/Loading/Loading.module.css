@@ -1,0 +1,21 @@
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4%;
+
+    width: 20%;
+    height: 20%;
+
+    position: fixed;
+    left: 40%;
+    top: 40%;
+}
+
+.circle{
+    height: 25%;
+    width: 15%;
+    border-radius: 50%;
+    border:5px solid #9F84D9;
+}
