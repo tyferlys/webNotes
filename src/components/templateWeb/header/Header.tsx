@@ -45,7 +45,7 @@ const Header = ({currentPage} : any) => {
     console.log(currentPage)
 
     return (
-        <header>
+        <motion.header layout>
             <div className={classes.headerContainer}>
                 <motion.div className={classes.logo}
                     ref = {logo}
@@ -106,7 +106,7 @@ const Header = ({currentPage} : any) => {
                     </Link>
                 </motion.div>
             </div>
-        </header>
+        </motion.header>
     );
 };
 

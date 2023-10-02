@@ -1,0 +1,64 @@
+
+.finderContainer{
+    background: #F2F2F2;
+    box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.2);
+
+    width: 100%;
+    border-radius: 20px;
+    padding:10% 0%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.finderContainer > div{
+    width:100%;
+}
+
+.finderContainer > input{
+    display: block;
+    border:none;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-size: 16px;
+
+    font-family: Roboto;
+    font-weight: 200;
+
+    background: #F2F2F2;
+    outline: none;
+    padding:3%;
+
+    width:80%;
+    margin: auto;
+    margin-bottom:10%;
+
+}
+
+.finderContainer > div:nth-child(2){
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5%;
+}
+
+.finderContainer > div > button{
+    display: inline-block;
+    width: 40%;
+    text-align: center;
+    border:none;
+    background: #614ED9;
+    color:white;
+
+    font-family: Roboto;
+    font-weight: 600;
+    border-radius:20px;
+
+    margin:2% 0%;
+
+    padding:2%;
+    box-shadow: 1px 1px 20px rgba(97, 78, 217, 0.6);
+}

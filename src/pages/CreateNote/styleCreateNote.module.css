@@ -1,0 +1,19 @@
+
+.mainContainer{
+    width: 80%;
+    margin: auto;
+}
+
+.title{
+    font-size: 42px;
+    font-weight: 600;
+    color:#F2F2F2;
+}
+
+.helpTitle{
+    font-size: 24px;
+    font-weight: 200;
+    color:#F2F2F2;
+
+    margin-top: 1%;
+}

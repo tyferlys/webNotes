@@ -6,13 +6,15 @@ import CreateNote from "./pages/CreateNote/CreateNote";
 import Auth from "./pages/Auth/Auth";
 import RegistrationContainer from "./pages/Registration/RegistrationContainer";
 import AuthContainer from "./pages/Auth/AuthContainer";
+import MainPageContainer from "./pages/MainPage/MainPageContainer";
+import CreateNoteContainer from "./pages/CreateNote/CreateNoteContainer";
 
 export const WebRoutes = createBrowserRouter([
     {
         path:"/",
         element: (
             <Template currentPage="main">
-                <MainPage/>
+                <MainPageContainer/>
             </Template>
         ),
     },
@@ -28,7 +30,7 @@ export const WebRoutes = createBrowserRouter([
         path:"/createNote",
         element: (
             <Template currentPage="createNote">
-                <CreateNote/>
+                <CreateNoteContainer/>
             </Template>
         ),
     },

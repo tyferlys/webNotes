@@ -1,0 +1,36 @@
+
+.block2Container{
+    width: 80%;
+    margin: auto;
+    margin-top:5%;
+}
+
+.firstBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.menu{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.itemMenu{
+    font-size: 44px;
+    font-weight: 200;
+    font-family: Roboto;
+    color:#F2F2F2;
+
+    width:35%;
+    text-align: center;
+    margin:auto;
+    margin-top:2%;
+    padding-bottom: 1%;
+
+    position: relative;
+}

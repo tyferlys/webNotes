@@ -1,0 +1,179 @@
+
+.noteContainer{
+    width: 100%;
+    margin: 5% auto;
+}
+
+.contentContainer{
+    max-width: 100%;
+    margin: auto;
+    padding: 3%;
+    border-radius: 20px;
+
+    background: #F2F2F2;
+    box-shadow: 1px 1px 30px rgba(255, 255, 255, 0.3);
+}
+
+.infoNote{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.isSave{
+    font-size: 14px;
+    font-weight: 600;
+    color: #614ED9;
+}
+
+.noteArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin-top: 2%;
+}
+
+.enterTitleNote{
+    width:100%;
+    margin: auto;
+}
+
+.inputTitle{
+    width: 100%;
+    padding: 1% 1% 0% 1%;
+    letter-spacing: 1px;
+
+    border:none;
+    outline: none;
+    border-bottom: 2px solid #0D0D0D;
+    background: #F2F2F2;
+
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.enterText{
+    margin-top: 2%;
+}
+
+.inputText{
+
+    width: 100%;
+    min-height: 50vh;
+
+    outline: none;
+    border: none;
+
+    outline: none;
+    background: #F2F2F2;
+
+    font-family: Roboto;
+    font-size: 24px;
+}
+
+.titleTools{
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 600;
+
+    text-align: center;
+    margin-top: 1%;
+}
+
+.tools{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 2%;
+
+    margin-top: 2%;
+}
+
+.tools > button{
+    width: 20%;
+    padding: 1% 1%;
+
+    border:none;
+    background: #614ED9;
+    color:#F2F2F2;
+    border-radius:10px;
+
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.inputText textarea{
+    display: block;
+    resize: none;
+    outline: none;
+    border: none;
+
+    width: 75%;
+    background: #F2F2F2;
+
+    border-left: 3px solid #0D0D0D;
+    padding-left: 1%;
+
+    font-family: Roboto;
+    font-size: 20px;
+    overflow: hidden;
+    height: auto;
+}
+
+.moveNote{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.moveNote button{
+    width: 20%;
+    padding:1% 0%;
+    border-radius:10px;
+
+    border: none;
+    color:white;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-top: 3%;
+}
+
+.moveNote button:nth-child(1){
+    background: #614ED9;
+}
+
+.moveNote button:nth-child(2){
+    background: #F23C4A;
+}
+
+.elementContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.deleteButton{
+    height:auto;
+    width:20%;
+
+    border:none;
+    background: #F23C4A;
+    color: #F2F2F2;
+    padding: 1% 0%;
+
+    border-radius: 20px;
+
+    font-size:12px;
+    font-weight: 600;
+}
+

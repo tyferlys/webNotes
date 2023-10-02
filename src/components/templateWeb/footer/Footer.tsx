@@ -41,7 +41,7 @@ const Footer = () => {
     }, [obj1View, obj2View, obj1Info, obj2Info, animate1, animate2])
 
     return (
-        <footer>
+        <motion.footer layout>
             <motion.div className={classes.info1}
                         ref = {obj1Info}
                         whileHover={{
@@ -86,7 +86,7 @@ const Footer = () => {
                     Web Notes
                 </div>
             </motion.div>
-        </footer>
+        </motion.footer>
     );
 };
 
